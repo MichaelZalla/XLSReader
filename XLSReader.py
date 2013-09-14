@@ -62,7 +62,8 @@ class XLSReader(object):
             if sheet.name.lower() == name.lower():
                 return sheet
         #At this point, if no match has been found, raise an Exception
-        raise Exception("Error: Sheet '" + sheet.name + "' not found in workbook.")
+        print "Error: Sheet '" + sheet.name + "' not found in workbook."
+        return None
 
     '''
     Allows the user to pass in a sheet and an associated 'config' object containing
@@ -133,7 +134,7 @@ class XLSReader(object):
 
     '''
     Technically, a sheet will have to be configured before this method may be called,
-    as required by XLSReader.get_fields(), which is called within this method. However,
+    as required by XLSReader.get_fields(), which is called within this method. Regardless,
     this method allows the user to re-defined the current 'UNIQUE_ID_FIELD' for a sheet
     between queries (in the case that multiple possible unique fields are available).
     If no sheet is specified, the method will use the current active sheet.
